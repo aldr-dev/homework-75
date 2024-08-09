@@ -50,18 +50,18 @@ const CipherForm = () => {
   };
 
   const handleDecode = async (event: React.FormEvent) => {
-    event.preventDefault();
-    const form = event.currentTarget as HTMLFormElement;
-
-    if (!form.checkValidity()) {
-      return;
-    }
-
-    if (cipherData.password.trim().length === 0 || cipherData.encoded.trim().length === 0) {
-      toast.error('Enter your password and decoded message!');
-      return;
-    }
     try {
+      event.preventDefault();
+      const form = event.currentTarget as HTMLFormElement;
+
+      if (!form.checkValidity()) {
+        return;
+      }
+
+      if (cipherData.password.trim().length === 0 || cipherData.encoded.trim().length === 0) {
+        toast.error('Enter your password and decoded message!');
+        return;
+      }
       const decoded = {message: cipherData.encoded, password: cipherData.password};
       await dispatch(fetchDecoded(decoded)).unwrap();
     } catch (error) {
@@ -71,18 +71,19 @@ const CipherForm = () => {
   };
 
   const handleEncode = async (event: React.FormEvent) => {
-    event.preventDefault();
-    const form = event.currentTarget as HTMLFormElement;
-
-    if (!form.checkValidity()) {
-      return;
-    }
-
-    if (cipherData.password.trim().length === 0 || cipherData.decoded.trim().length === 0) {
-      toast.error('Enter your password and encoded message!');
-      return;
-    }
     try {
+      event.preventDefault();
+      const form = event.currentTarget as HTMLFormElement;
+
+      if (!form.checkValidity()) {
+        return;
+      }
+
+      if (cipherData.password.trim().length === 0 || cipherData.decoded.trim().length === 0) {
+        toast.error('Enter your password and encoded message!');
+        return;
+      }
+
       const encoded = {message: cipherData.decoded, password: cipherData.password};
       await dispatch(fetchEncoded(encoded)).unwrap();
     } catch (error) {
