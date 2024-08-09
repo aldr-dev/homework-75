@@ -3,3 +3,11 @@ export interface CipherFormField {
   password: string;
   encoded: string;
 }
+
+export interface EncodedData {
+  encoded: string
+}
+
+export interface DecodedData {
+  decoded: string
+}

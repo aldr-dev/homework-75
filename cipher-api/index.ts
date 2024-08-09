@@ -1,5 +1,6 @@
 import express from 'express';
 import cors, {CorsOptions} from 'cors';
+import {cipherRouter} from "./routers/cipher";
 
 const app = express();
 const port = 8000;
@@ -17,6 +18,7 @@ const corsOptions: CorsOptions = {
 
 app.use(cors(corsOptions));
 app.use(express.json());
+app.use('/', cipherRouter);
 
 app.listen(port, () => {
     console.log(`Server running at http://127.0.0.1:${port}`);

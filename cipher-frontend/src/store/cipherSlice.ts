@@ -1,15 +1,16 @@
 import {createSlice} from '@reduxjs/toolkit';
 import {fetchDecoded, fetchEncoded} from './cipherThunks';
+import {DecodedData, EncodedData} from '../types';
 
 export interface CipherSlice {
-  decodedMessage: string;
-  encodedMessage: string;
+  decodedMessage: DecodedData | null;
+  encodedMessage: EncodedData | null;
   isLoading: boolean;
 }
 
 const initialState: CipherSlice = {
-  decodedMessage: '',
-  encodedMessage: '',
+  decodedMessage: null,
+  encodedMessage: null,
   isLoading: false,
 };
 
